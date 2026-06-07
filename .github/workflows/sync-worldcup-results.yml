@@ -3,13 +3,14 @@ name: Sincronizar resultados Mundial 2026
 on:
   workflow_dispatch:
   schedule:
-    # Cada 15 minutos. GitHub Actions usa UTC.
-    - cron: '*/15 * * * *'
+    # Cada hora. GitHub Actions usa UTC.
+    - cron: "0 * * * *"
 
 jobs:
   sync-results:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
@@ -28,12 +29,3 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: node scripts/close-started-matches.mjs
-
-      - name: Sincronizar resultados desde API-Football
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
-          API_FOOTBALL_LEAGUE_ID: '1'
-          API_FOOTBALL_SEASON: '2026'
-        run: node scripts/sync-worldcup-results.mjs
