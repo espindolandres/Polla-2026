@@ -1,0 +1,31 @@
+name: Sincronizar resultados Mundial 2026
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Cada hora. GitHub Actions usa UTC.
+    - cron: "0 * * * *"
+
+jobs:
+  sync-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Cerrar partidos que ya empezaron por fecha
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/close-started-matches.mjs
