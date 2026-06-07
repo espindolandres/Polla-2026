@@ -1,0 +1,41 @@
+[
+  {
+    "match_number": 1,
+    "phase": "Fase de grupos",
+    "group_name": "Grupo A",
+    "home_team": null,
+    "away_team": null,
+    "match_date": "2026-06-11T00:00:00.000Z",
+    "stadium": "Mexico City Stadium",
+    "city": "Mexico City",
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled"
+  },
+  {
+    "match_number": 2,
+    "phase": "Fase de grupos",
+    "group_name": null,
+    "home_team": null,
+    "away_team": null,
+    "match_date": null,
+    "stadium": null,
+    "city": null,
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled"
+  },
+  {
+    "match_number": 104,
+    "phase": "Final",
+    "group_name": null,
+    "home_team": null,
+    "away_team": null,
+    "match_date": "2026-07-19T00:00:00.000Z",
+    "stadium": "New York New Jersey Stadium",
+    "city": "New York New Jersey",
+    "home_score": null,
+    "away_score": null,
+    "status": "scheduled"
+  }
+]

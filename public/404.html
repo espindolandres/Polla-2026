@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirigiendo...</title>
+    <script>
+      // Soporte para rutas SPA en GitHub Pages con BrowserRouter.
+      // Basado en el patrón de redirección de single-page-apps-github-pages.
+      const pathSegmentsToKeep = 1;
+      const locationParts = window.location.pathname.split('/').filter(Boolean);
+      const repo = locationParts.slice(0, pathSegmentsToKeep).join('/');
+      const redirectPath = '/' + repo + '/?/' + locationParts.slice(pathSegmentsToKeep).join('/') + window.location.search.replace('?', '&') + window.location.hash;
+      window.location.replace(redirectPath);
+    </script>
+  </head>
+  <body>Redirigiendo...</body>
+</html>
